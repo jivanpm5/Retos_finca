@@ -48,17 +48,5 @@ public class FincaControlador {
         Finca f = fincaServicio.save(finca);
         return f;
     }
-    
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Finca update(@RequestBody Finca finca) {
-        return fincaServicio.update(finca);
-    }
-    
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Long id) {
-        return fincaServicio.deleteFinca(id);
-    }
 
 }

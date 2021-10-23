@@ -35,4 +35,12 @@ public class ReservaServicio {
             }
         }
     }
+
+    public Reserva update(Reserva reservation) {
+        return null;
+    }
+
+    public boolean deleteReservation(Object reservationId) {
+        return false;
+    }
 }
