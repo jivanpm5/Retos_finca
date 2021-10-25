@@ -45,4 +45,16 @@ public class MensajeControlador {
         return f;
     }
     
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Mensaje update(@RequestBody Mensaje finca) {
+        return mensajeServicio.update(finca);
+        
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") Long id) {
+        return mensajeServicio.deleteMensaje(id);
+    }
 }

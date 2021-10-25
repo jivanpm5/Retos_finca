@@ -27,7 +27,7 @@ public class Cliente {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
-    private List<Mensaje>  messages;
+    private List<Mensaje> messages;
 
     public Long getIdClient() {
         return idClient;
