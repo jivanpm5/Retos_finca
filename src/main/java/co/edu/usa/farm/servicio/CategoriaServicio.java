@@ -59,5 +59,5 @@ public class CategoriaServicio {
         }).orElse(false);
         return d;
     }
-    
+
 }
