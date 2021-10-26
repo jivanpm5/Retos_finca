@@ -25,6 +25,13 @@ public class ClienteRepositorio {
 
     public Cliente save(Cliente f){
         return clienteRepoitorio.save(f);
+    }
+
+    public Optional<Cliente> getClient(Long idClient) {
+        return null;
+    }
+
+    public void delete(Cliente client) {
     }   
     
 }

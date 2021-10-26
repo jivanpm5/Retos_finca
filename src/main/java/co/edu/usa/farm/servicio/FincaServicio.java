@@ -35,12 +35,40 @@ public class FincaServicio {
             }     
         }
     }
-
-    public Finca update(Finca finca) {
-        return null;
+    public Finca update(Finca finca){
+        if(finca.getId()!=null){
+            Optional<Finca> e=Crudfinca.getFinca(finca.getId());
+            if(!e.isEmpty()){
+                if(finca.getName()!=null){
+                    e.get().setName(finca.getName());
+                }
+                if(finca.getAddress()!=null){
+                    e.get().setAddress(finca.getAddress());
+                }
+                if(finca.getExtension()!=null){
+                    e.get().setExtension(finca.getExtension());
+                }
+                if(finca.getDescription()!=null){
+                    e.get().setDescription(finca.getDescription());
+                }
+                if(finca.getCategory()!=null){
+                    e.get().setCategory(finca.getCategory());
+                }
+                Crudfinca.save(e.get());
+                return e.get();
+            }else{
+                return finca;
+            }
+        }else{
+            return finca;
+        }
     }
 
-    public boolean deleteFinca(Long id) {
-        return false;
+    public boolean delete(Long idFinca) {
+        Boolean aBoolean = getFinca(idFinca).map(finca -> {
+            Crudfinca.delete(finca);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
 }

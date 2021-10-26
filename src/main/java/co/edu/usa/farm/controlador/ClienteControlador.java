@@ -1,9 +1,11 @@
 package co.edu.usa.farm.controlador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -17,6 +19,8 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/Client")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
 public class ClienteControlador {
     @Autowired
     private ClienteServicio clienteServicio;
@@ -29,8 +33,8 @@ public class ClienteControlador {
     }
 
     @GetMapping("/{id}")
-    public Optional<Cliente> getCliente(@PathVariable("id") long id)    {
-        return clienteServicio.getCliente(id);
+    public Optional<Cliente> getCliente(@PathVariable("id") long clientId)    {
+        return clienteServicio.getCliente(clientId);
     }
 
     @PostMapping("/save")
@@ -47,8 +51,8 @@ public class ClienteControlador {
     
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Long id) {
-        return clienteServicio.deleteCliente(id);
+    public boolean delete(@PathVariable("id") Long clientId) {
+        return clienteServicio.delete(clientId);
     }
     
 }

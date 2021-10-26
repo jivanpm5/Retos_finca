@@ -3,10 +3,12 @@ package co.edu.usa.farm.controlador;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +21,8 @@ import co.edu.usa.farm.servicio.CategoriaServicio;
 
 @RestController
 @RequestMapping("/api/Category")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
 public class CategoriaControlador {
     
 
@@ -33,8 +37,8 @@ public class CategoriaControlador {
     }
 
     @GetMapping("/{id}")
-    public Optional<Categoria> getCategoria(@PathVariable("id") long id)    {
-        return categoriaServicio.getCategoria(id);
+    public Optional<Categoria> getCategoria(@PathVariable("id") long categoriaId)    {
+        return categoriaServicio.getCategoria(categoriaId);
     }
 
     @PostMapping("/save")
@@ -52,8 +56,8 @@ public class CategoriaControlador {
     
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Long id) {
-        return categoriaServicio.deleteCategoria(id);
+    public boolean delete(@PathVariable("id") Long categoriaId) {
+        return categoriaServicio.deleteCategoria(categoriaId);
     }
 
 }

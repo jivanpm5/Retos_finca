@@ -24,6 +24,10 @@ public class MensajeRepositorio {
 
     public Mensaje save(Mensaje mensaje){
         return mensajeRepoitorio.save(mensaje);
+    }
+
+    public Optional<Mensaje> getMessage(Long idMessage) {
+        return null;
     } 
     
 }

@@ -19,11 +19,16 @@ public class CategoriaRepositorio {
     }
 
     public Optional<Categoria> getCategoria(Long idCategoria){
-        return  categoriaRepoitorio.findById(idCategoria);
+        return categoriaRepoitorio.findById(idCategoria);
     }
 
     public Categoria save(Categoria categoria){
         return categoriaRepoitorio.save(categoria);
-    }   
+    }
+
+    public void delete(Categoria categoria){
+        categoriaRepoitorio.delete(categoria);
+    }
+
     
 }

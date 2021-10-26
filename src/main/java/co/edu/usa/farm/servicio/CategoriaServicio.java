@@ -19,8 +19,8 @@ public class CategoriaServicio {
         return Crudcategoria.getAll();
     }
     
-    public Optional<Categoria> getCategoria(Long idFinca){
-        return  Crudcategoria.getCategoria(idFinca);
+    public Optional<Categoria> getCategoria(Long idCategoria){
+        return  Crudcategoria.getCategoria(idCategoria);
     }
 
     public Categoria save(Categoria categoria){
@@ -37,12 +37,27 @@ public class CategoriaServicio {
         }
     }
 
-    public Categoria update(Categoria categoria) {
-        return null;
+    public Categoria update(Categoria categoria){
+        if(categoria.getId()!=null){
+            Optional<Categoria>g=Crudcategoria.getCategoria(categoria.getId());
+            if(!g.isEmpty()){
+                if(categoria.getDescription()!=null){
+                    g.get().setDescription(categoria.getDescription());
+                }
+                if(categoria.getName()!=null){
+                    g.get().setName(categoria.getName());
+                }
+                return Crudcategoria.save(g.get());
+            }
+        }
+        return categoria;
     }
-
-    public boolean deleteCategoria(Long id) {
-        return false;
+    public boolean deleteCategoria(Long idCategoria){
+        Boolean d=getCategoria(idCategoria).map(categoria -> {
+            Crudcategoria.delete(categoria);
+            return true;
+        }).orElse(false);
+        return d;
     }
     
 }
