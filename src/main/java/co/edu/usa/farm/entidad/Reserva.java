@@ -70,20 +70,20 @@ public class Reserva implements Serializable {
         this.status = status;
     }
 
-    public Cliente getClient() {
-        return client;
-    }
-
-    public void setClient(Cliente client) {
-        this.client = client;
-    }
-
     public Finca getFarm() {
         return farm;
     }
 
     public void setFarm(Finca farm) {
         this.farm = farm;
+    }
+
+    public Cliente getClient() {
+        return client;
+    }
+
+    public void setClient(Cliente client) {
+        this.client = client;
     }
 
     public String getScore() {

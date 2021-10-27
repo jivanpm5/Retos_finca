@@ -26,8 +26,7 @@ import co.edu.usa.farm.servicio.ReservaServicio;
 public class ReservaControlador {
     @Autowired
     private ReservaServicio reservaServicio;
-    private Object reservationId;
-
+    
     @GetMapping("/all")
     public List<Reserva> getReservations(){
         return reservaServicio.getAll();
@@ -51,7 +50,7 @@ public class ReservaControlador {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Long id) {
+    public boolean delete(@PathVariable("id") Long reservationId) {
         return reservaServicio.deleteReservation(reservationId);
     }
 }

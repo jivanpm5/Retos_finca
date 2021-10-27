@@ -22,9 +22,9 @@ public class Finca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String address;
     private Long extension;
-    private String name;
     private String description;
 
     @ManyToOne
@@ -44,6 +44,14 @@ public class Finca {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -60,13 +68,6 @@ public class Finca {
         this.extension = extension;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getDescription() {
         return description;

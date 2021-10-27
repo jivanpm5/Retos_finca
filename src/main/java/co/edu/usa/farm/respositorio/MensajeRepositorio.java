@@ -28,6 +28,10 @@ public class MensajeRepositorio {
 
     public Optional<Mensaje> getMessage(Long idMessage) {
         return null;
+    }
+
+    public void delete(Mensaje mensaje) {
+        mensajeRepoitorio.delete(mensaje);
     } 
     
 }

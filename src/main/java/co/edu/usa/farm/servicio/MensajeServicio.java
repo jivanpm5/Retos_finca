@@ -34,13 +34,30 @@ public class MensajeServicio {
             }     
         }
     }
-
-    public Mensaje update(Mensaje finca) {
-        return null;
+    
+    public Mensaje update(Mensaje mensaje){
+        if(mensaje.getIdMessage()!=null){
+            Optional<Mensaje> e= Crudmensaje.getMessage(mensaje.getIdMessage());
+            if(!e.isEmpty()){
+                if(mensaje.getMessageText()!=null){
+                    e.get().setMessageText(mensaje.getMessageText());
+                }
+                Crudmensaje.save(e.get());
+                return e.get();
+            }else{
+                return mensaje;
+            }
+        }else{
+            return mensaje;
+        }
     }
-
-    public boolean deleteMensaje(Long id) {
-        return false;
+    
+    public boolean deleteMensaje(Long idMensaje) {
+        Boolean aBoolean = getMensaje(idMensaje).map(mensaje -> {
+            Crudmensaje.delete(mensaje);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
     
 }

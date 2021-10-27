@@ -36,11 +36,35 @@ public class ReservaServicio {
         }
     }
 
-    public Reserva update(Reserva reservation) {
-        return null;
+    public Reserva update(Reserva reservation){
+        if(reservation.getIdReservation()!=null){
+            Optional<Reserva> e= Crudreserva.getReservation(reservation.getIdReservation());
+            if(!e.isEmpty()){
+
+                if(reservation.getStartDate()!=null){
+                    e.get().setStartDate(reservation.getStartDate());
+                }
+                if(reservation.getDevolutionDate()!=null){
+                    e.get().setDevolutionDate(reservation.getDevolutionDate());
+                }
+                if(reservation.getStatus()!=null){
+                    e.get().setStatus(reservation.getStatus());
+                }
+                Crudreserva.save(e.get());
+                return e.get();
+            }else{
+                return reservation;
+            }
+        }else{
+            return reservation;
+        }
     }
 
-    public boolean deleteReservation(Object reservationId) {
-        return false;
+    public boolean deleteReservation(Long reservationId) {
+        Boolean aBoolean = getReservation(reservationId).map(reservation -> {
+            Crudreserva.delete(reservation);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
 }
