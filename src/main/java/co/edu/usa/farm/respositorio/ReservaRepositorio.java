@@ -18,8 +18,8 @@ public class ReservaRepositorio {
     public List<Reserva> getAll(){
         return (List<Reserva>) reservaRepoitorio.findAll();
     }
-    public Optional<Reserva> getReservation(Long id){
-        return reservaRepoitorio.findById(id);
+    public Optional<Reserva> getReservation(Long idReservation){
+        return reservaRepoitorio.findById(idReservation);
     }
     public Reserva save(Reserva reservation){
         return reservaRepoitorio.save(reservation);
