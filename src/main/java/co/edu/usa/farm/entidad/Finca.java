@@ -35,6 +35,9 @@ public class Finca {
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "farm")
     @JsonIgnoreProperties({"farm", "client"})
     private List<Mensaje> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "farm")
+    @JsonIgnoreProperties({"farm","message"})
     private List<Reserva> reservations;
 
     public Long getId() {

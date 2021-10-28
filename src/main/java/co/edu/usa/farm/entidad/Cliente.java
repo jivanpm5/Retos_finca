@@ -28,6 +28,9 @@ public class Cliente {
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Mensaje> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @JsonIgnoreProperties("client")
     private List<Reserva> reservations;
 
     public Long getIdClient() {
