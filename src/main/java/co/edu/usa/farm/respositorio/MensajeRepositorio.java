@@ -27,7 +27,7 @@ public class MensajeRepositorio {
     }
 
     public Optional<Mensaje> getMessage(Long idMessage) {
-        return null;
+        return mensajeRepoitorio.findById(idMessage);
     }
 
     public void delete(Mensaje mensaje) {

@@ -23,15 +23,16 @@ public class ClienteRepositorio {
         return  clienteRepoitorio.findById(idCliente);
     }
 
-    public Cliente save(Cliente f){
-        return clienteRepoitorio.save(f);
+    public Cliente save(Cliente cliente){
+        return clienteRepoitorio.save(cliente);
     }
 
-    public Optional<Cliente> getClient(Long idClient) {
-        return null;
+    public Optional<Cliente> getClient(Long idCliente) {
+        return clienteRepoitorio.findById(idCliente);
     }
 
-    public void delete(Cliente client) {
+    public void delete(Cliente cliente) {
+        clienteRepoitorio.delete(cliente);
     }   
     
 }
