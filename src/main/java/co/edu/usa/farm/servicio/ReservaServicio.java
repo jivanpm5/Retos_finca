@@ -1,5 +1,9 @@
 package co.edu.usa.farm.servicio;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.usa.farm.entidad.Reserva;
+import co.edu.usa.farm.reporte.ClienteContador;
+import co.edu.usa.farm.reporte.StatusReserva;
 import co.edu.usa.farm.respositorio.ReservaRepositorio;
 
 /**
@@ -90,4 +96,34 @@ public class ReservaServicio {
         //Retorna a boolean
         return aBoolean;
     }
+    
+    public StatusReserva reporteStatusServicio (){
+        List<Reserva>completed= Crudreserva.ReservacionStatusRepositorio("completed");
+        List<Reserva>cancelled= Crudreserva.ReservacionStatusRepositorio("cancelled");
+        
+        return new StatusReserva(completed.size(), cancelled.size() );
+    }
+    
+    public List<Reserva> reporteTiempoServicio (String datoA, String datoB){
+        SimpleDateFormat parser = new SimpleDateFormat ("yyyy-MM-dd");
+        
+        Date datoUno = new Date();
+        Date datoDos = new Date();
+        
+        try{
+            datoUno = parser.parse(datoA);
+            datoDos = parser.parse(datoB);
+        }catch(ParseException evt){
+            evt.printStackTrace();
+        }if(datoUno.before(datoDos)){
+            return Crudreserva.ReservacionTiempoRepositorio(datoUno, datoDos);
+        }else{
+            return new ArrayList<>();
+        
+        } 
+    } 
+    public List<ClienteContador> reporteClientesServicio(){
+            return Crudreserva.getClientesRepositorio();
+        } 
+
 }
