@@ -3,7 +3,9 @@ package co.edu.usa.farm.entidad;
 
 
 import java.io.Serializable;
-import java.util.Calendar;
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +25,8 @@ public class Reserva implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReservation;
-    private Calendar startDate;
-    private Calendar devolutionDate;
+    private Date startDate;
+    private Date devolutionDate;
     private String status="created";
     
     @ManyToOne
@@ -46,19 +48,19 @@ public class Reserva implements Serializable {
         this.idReservation = idReservation;
     }
 
-    public Calendar getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Calendar startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Calendar getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(Calendar devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 

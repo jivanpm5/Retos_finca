@@ -37,13 +37,12 @@ public List<Reserva> ReservacionStatusRepositorio (String status){
 
     public List<Reserva> ReservacionTiempoRepositorio (Date a, Date b){
         return reservaRepoitorio.findAllByStartDateAfterAndStartDateBefore(a, b);
-    
     }
     
     public List<ClienteContador> getClientesRepositorio(){
         List<ClienteContador> res = new ArrayList<>();
         List<Object[]> report = reservaRepoitorio.countTotalReservationsByClient();
-            for(int i=0; i<report.size(); i++){
+        for(int i=0; i<report.size(); i++){
             res.add(new ClienteContador((Long)report.get(i)[1],(Cliente) report.get(i)[0]));
         }
         return res;
